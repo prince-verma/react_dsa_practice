@@ -1,14 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import sum from './utilities/sum';
+import { sum } from './utilities/sum';
 
 function App() {
 
-
   React.useEffect(() => {
-    console.log('here comes in sum -- ', sum(1, 2))
-  }, [])
+    console.log(`here comes in sum --  ${sum(1)(2)}`);
+    alert(sum(1)(2));
+  }, []);
 
   return (
     <div className="App">

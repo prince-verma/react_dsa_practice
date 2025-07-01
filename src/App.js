@@ -5,6 +5,7 @@ import { sum } from './utilities/sum';
 import stringSum from './utilities/stringSum';
 import memoize from './utilities/memoize';
 import functionCompose from './utilities/functionCompose';
+import lengthOfLongestSubstring from './utilities/longestSubString';
 import { type } from '@testing-library/user-event/dist/type';
 
 const range = {

@@ -8,6 +8,7 @@ import functionCompose from './utilities/functionCompose';
 import lengthOfLongestSubstring from './utilities/longestSubString';
 import addTwoNumbers from './utilities/add_2_num_linked';
 import bitSum from './utilities/bitwise_sum';
+import insertionSort from './utilities/insertionSort';
 import { type } from '@testing-library/user-event/dist/type';
 
 const range = {

@@ -28,14 +28,14 @@ export function mergeSortedLinkedList(list1, list2){
   return result.reverse()
 }
 
-const list1 = new LinkedList();
-const list2 = new LinkedList();
-[6, 5, 4, 3, 2, 1].forEach((item) => {
-  list1.addNode(item);
-  list2.addNode(item + 3);
-});
-list1.printList("list1")
-list2.printList("list2")
+// const list1 = new LinkedList();
+// const list2 = new LinkedList();
+// [6, 5, 4, 3, 2, 1].forEach((item) => {
+//   list1.addNode(item);
+//   list2.addNode(item + 3);
+// });
+// list1.printList("list1")
+// list2.printList("list2")
 
-const newList = mergeSortedLinkedList(list1, list2)
-newList.printList("mergedList")
+// const newList = mergeSortedLinkedList(list1, list2)
+// newList.printList("mergedList")

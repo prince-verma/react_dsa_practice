@@ -1,36 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
-import { sum } from './utilities/sum';
-import stringSum from './utilities/stringSum';
-import memoize from './utilities/memoize';
-import functionCompose from './utilities/functionCompose';
-import lengthOfLongestSubstring from './utilities/longestSubString';
-import addTwoNumbers from './utilities/add_2_num_linked';
-import bitSum from './utilities/bitwise_sum';
-import insertionSort from './utilities/sorting/insertionSort';
-import * as linkedListBasics from './utilities/linkedListBasics';
-import { type } from '@testing-library/user-event/dist/type';
+import logo from "./logo.svg";
+import "./App.css";
+import React from "react";
+import { mergeSortedLinkedList } from "./utilities/linkedList/mergedSortedList";
 
 const range = {
-   from : 1,
-   to: 5,
-   [Symbol.asyncIterator]: async function* () {
-    try{
+  from: 1,
+  to: 5,
+  [Symbol.asyncIterator]: async function* () {
+    try {
       for (let i = this.from; i <= this.to; i++) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          yield i;
-        }
-    }catch(error) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        yield i;
+      }
+    } catch (error) {
       console.error("Caught an error:", error.message);
     }
-   }
- }
+  },
+};
 
 function App() {
-
   React.useEffect(() => {
-
     // console.log(`here comes in sum --  ${stringSum("1", "2")}`);
     // console.log(`here comes in sum --  ${stringSum("98765", "12345")}`);
     // console.log(`here comes in sum --  ${stringSum("16385", "13745")}`);

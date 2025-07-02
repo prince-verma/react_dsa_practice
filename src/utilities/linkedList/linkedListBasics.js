@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class LinkedList {
+export class LinkedList {
   constructor() {
     this.head = null;
     this.size = 0;
@@ -165,24 +165,24 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
-[1, 2, 3, 4, 5, 6].forEach((item) => {
-  list.addNode(item);
-});
+// const list = new LinkedList();
+// [1, 2, 3, 4, 5, 6].forEach((item) => {
+//   list.addNode(item);
+// });
 // list.printList("list");
 // list.removeNode(6);
-list.printList("list");
-console.log("middle element - ", list.getMiddleElementUsingPtr());
+// list.printList("list");
+// console.log("middle element - ", list.getMiddleElementUsingPtr());
 
-const reverseList = list.reverse();
-reverseList.printList("reverseList");
-const lastNode = reverseList.getNode(reverseList.size);
-lastNode.next = reverseList.getNode(2);
-console.log("item at list.hasCycle --", list.hasCycle());
-console.log("item at reverseList.hasCycle --", reverseList.hasCycle());
-console.log("item at reverseList.getCycleNode --", reverseList.getCycleNode());
-reverseList.removeCycle();
-reverseList.printList("reverseList");
-console.log("2nd node from last", reverseList.getNthELementFromEnd(2))
-reverseList.removeNthELementFromEnd(2)
-reverseList.printList("reverseList");
+// const reverseList = list.reverse();
+// reverseList.printList("reverseList");
+// const lastNode = reverseList.getNode(reverseList.size);
+// lastNode.next = reverseList.getNode(2);
+// console.log("item at list.hasCycle --", list.hasCycle());
+// console.log("item at reverseList.hasCycle --", reverseList.hasCycle());
+// console.log("item at reverseList.getCycleNode --", reverseList.getCycleNode());
+// reverseList.removeCycle();
+// reverseList.printList("reverseList");
+// console.log("2nd node from last", reverseList.getNthELementFromEnd(2))
+// reverseList.removeNthELementFromEnd(2)
+// reverseList.printList("reverseList");

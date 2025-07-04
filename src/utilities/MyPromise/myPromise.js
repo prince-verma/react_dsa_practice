@@ -54,6 +54,12 @@ class MyPromise {
   #onReject(val) {
     queueMicrotask(() => {
       if (this.#state !== STATE.PENDING) return;
+      
+      if( val instanceof MyPromise){
+        val.then(this.#onSuccessBind, this.#onRejectBind)
+        return
+      }
+
       this.#value = val;
       this.#state = STATE.REJECTED;
       this.#runCallbacks();

@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-// import * as test from "./utilities/bitwise/addBinaryStrings";
+// import * as test from "./utilities/bitwise/divisionWithoutDivideOperator";
 
 // const range = {
 //   from: 1,

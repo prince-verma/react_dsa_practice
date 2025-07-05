@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-// import * as test from "./utilities/bitwise/divisionWithoutDivideOperator";
+import {pattern1} from "./utilities/patterns/index";
 
 // const range = {
 //   from: 1,
@@ -42,9 +42,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -53,6 +50,9 @@ function App() {
         >
           Learn React
         </a>
+        <pre>
+          {pattern1(11)}
+        </pre>
       </header>
     </div>
   );

@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import {pattern1} from "./utilities/patterns/index";
+import { pattern1 } from "./utilities/patterns/wPattern";
 
 // const range = {
 //   from: 1,
@@ -50,9 +50,7 @@ function App() {
         >
           Learn React
         </a>
-        <pre>
-          {pattern1(11)}
-        </pre>
+        <pre>{pattern1(11)}</pre>
       </header>
     </div>
   );

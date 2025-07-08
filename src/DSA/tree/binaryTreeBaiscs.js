@@ -206,21 +206,21 @@ export class BinaryTree {
   }
 }
 
-const testTree = new BinaryTree();
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-for (let item of arr) {
-  testTree.insert(item);
-}
+// const testTree = new BinaryTree();
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// for (let item of arr) {
+//   testTree.insert(item);
+// }
 
-console.log("testTree = ", testTree);
-console.log("inOrderTraverse = ", testTree.inOrderTraverse());
-console.log("preOrderTraverse = ", testTree.preOrderTraverse());
-console.log("postOrderTraverse = ", testTree.postOrderTraverse());
-console.log("levelOrderTraversal = ", testTree.levelOrderTraversal());
-console.log("levelOrderBFS = ", JSON.stringify(testTree.levelOrderBFS()));
-console.log("getDepth = ", testTree.getDepth());
-console.log("height = ", testTree.height());
-console.log("findSpiral = ", testTree.findSpiral());
+// console.log("testTree = ", testTree);
+// console.log("inOrderTraverse = ", testTree.inOrderTraverse());
+// console.log("preOrderTraverse = ", testTree.preOrderTraverse());
+// console.log("postOrderTraverse = ", testTree.postOrderTraverse());
+// console.log("levelOrderTraversal = ", testTree.levelOrderTraversal());
+// console.log("levelOrderBFS = ", JSON.stringify(testTree.levelOrderBFS()));
+// console.log("getDepth = ", testTree.getDepth());
+// console.log("height = ", testTree.height());
+// console.log("findSpiral = ", testTree.findSpiral());
 // console.log("searchBFS(3) = ", testTree.searchBFS(3));
 // console.log("searchBFS(9) = ", testTree.searchBFS(9));
 // console.log("searchDFS(5) = ", testTree.searchDFS(5));

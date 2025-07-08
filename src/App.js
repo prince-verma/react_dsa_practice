@@ -1,7 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import { pattern1 } from "./utilities/patterns/wPattern";
+import { pattern1 } from "./DSA/patterns/wPattern";
+import { BinaryTree } from "./DSA/tree/binaryTreeBaiscs";
+import MyPromise from "./DSA/MyPromise/myPromise";
 
 // const range = {
 //   from: 1,
@@ -36,6 +38,25 @@ function App() {
     //     console.log(`here comes in value -- `, value);
     //   }
     // })();
+    // MyPromise.resolve(10).then((x) => {
+    //   console.log('x -1 -', x);
+    //   return x + 10;
+    // }).then(x => {
+    //   console.log('x -2 -', x);
+    //   return x + 20;
+    // }).then(x => {
+    //   console.log('x - -', x);
+    //   return x + 20;
+    // }).catch((x) => {
+    //   console.log('catch - x - -', x);
+    //   return x + 20;
+    // }).finally((x) => {
+    //   console.log('finally - x - -', x);
+    //   return x + 20;
+    // }).then((x) => {
+    //   console.log('then - x - -', x);
+    //   return x + 20;
+    // });
   }, []);
 
   return (

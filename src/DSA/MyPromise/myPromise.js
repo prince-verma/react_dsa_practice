@@ -90,7 +90,7 @@ class MyPromise {
           return;
         }
         try {
-          const returned = thenCb(result)
+          const returned = catchCb(result)
           if( returned instanceof MyPromise){
             returned.then(resolve, reject)
           }else{
@@ -193,7 +193,7 @@ class MyPromise {
           })
           .catch((reason) => {
             errorCount++
-            errors[i] = {status: STATE.FULFILLED, reason};
+            errors[i] = {status: STATE.REJECTED, reason};
             if (errorCount === promises.length) {
               reject(errors);
             }
@@ -203,5 +203,5 @@ class MyPromise {
   }
 }
 
-// export default MyPromise;
-module.exports = MyPromise;
+export default MyPromise;
+// module.exports = MyPromise;

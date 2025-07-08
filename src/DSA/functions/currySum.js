@@ -36,3 +36,5 @@ const curriedSum = curry(newSum);
 // console.log(curriedSum(1)(2)(3,4)); // 10
 // console.log(curriedSum(1)(2,3,4)); // 10
 // console.log(curriedSum(1,2,3,4)); // 10
+
+// curry -- multiple, 3,5, 6

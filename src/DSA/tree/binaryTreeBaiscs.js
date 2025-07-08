@@ -56,7 +56,7 @@ export class BinaryTree {
 
   #levelOrderBfsRec(node, level, res) {
     if (node === null) return;
-    if (!res?.[level]) res.push([]);
+    if (!res?.[level]) res[level] = [];
     res[level].push(node.data);
     this.#levelOrderBfsRec(node.left, level + 1, res);
     this.#levelOrderBfsRec(node.right, level + 1, res);
@@ -66,6 +66,19 @@ export class BinaryTree {
   levelOrderBFS(node = this.root) {
     const res = [];
     this.#levelOrderBfsRec(node, 0, res);
+    return res;
+  }
+
+  // BFS traversal -- Level order traversal - Spiral form - right to left to right to left
+  findSpiral(node = this.root) {
+    let res = [];
+    this.#levelOrderBfsRec(node, 0, res)
+    res = res.map((item, index) => {
+      if(index % 2 === 0){
+        return item.reverse()
+      }
+      return item
+    })
     return res;
   }
 
@@ -180,9 +193,15 @@ export class BinaryTree {
     }
   }
   // Given a binary tree, the task is to find the maximum depth of the tree.
-  // The maximum depth or height of the tree is the number of edges in the tree from the root to the deepest node.
-  height(node = this.root) {
+  // The maximum depth of the tree is the number of edges in the tree from the root to the deepest node.
+  getDepth(node = this.root) {
     if (node === null) return -1;
+    return Math.max(this.getDepth(node.left), this.getDepth(node.right)) + 1;
+  }
+  // Given a binary tree, the task is to find the maximum height of the tree.
+  // The maximum height of the tree is the number of nodes in the tree from the root to the deepest node.
+  height(node = this.root) {
+    if (node === null) return 0;
     return Math.max(this.height(node.left), this.height(node.right)) + 1;
   }
 }
@@ -199,7 +218,9 @@ console.log("preOrderTraverse = ", testTree.preOrderTraverse());
 console.log("postOrderTraverse = ", testTree.postOrderTraverse());
 console.log("levelOrderTraversal = ", testTree.levelOrderTraversal());
 console.log("levelOrderBFS = ", JSON.stringify(testTree.levelOrderBFS()));
-// console.log("searchBFS(5) = ", testTree.searchBFS(5));
+console.log("getDepth = ", testTree.getDepth());
+console.log("height = ", testTree.height());
+console.log("findSpiral = ", testTree.findSpiral());
 // console.log("searchBFS(3) = ", testTree.searchBFS(3));
 // console.log("searchBFS(9) = ", testTree.searchBFS(9));
 // console.log("searchDFS(5) = ", testTree.searchDFS(5));
@@ -214,4 +235,3 @@ console.log("levelOrderBFS = ", JSON.stringify(testTree.levelOrderBFS()));
 //   console.log(`"height of the tree = "`, testTree.height());
 //   console.log("levelOrderTraversal = ", testTree.levelOrderTraversal());
 // }
-

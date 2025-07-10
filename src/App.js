@@ -3,7 +3,7 @@ import "./App.css";
 import React from "react";
 import { pattern1 } from "./DSA/patterns/wPattern";
 import { BinaryTree } from "./DSA/tree/binaryTreeBaiscs";
-import MyPromise from "./DSA/MyPromise/myPromise";
+import * as basics from './typeScript/basics'
 
 // const range = {
 //   from: 1,

@@ -8,7 +8,7 @@ function search(nums: number[], target: number): number {
         }
     }
     if(target === nums[mid]) return mid
-    let left, right
+    let left = 0, right = nums.length-1
     if(target >= nums[mid] && target <= nums[nums.length-1]){
         left = mid
         right = nums.length -1

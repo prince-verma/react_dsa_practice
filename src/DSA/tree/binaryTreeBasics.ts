@@ -9,12 +9,12 @@ export class TreeNode<T> {
   }
 }
 
-type TreeNodeOrNull<T> = TreeNode<T> | null;
+export type TreeNodeOrNull<T> = TreeNode<T> | null;
 
 export class BinaryTree<T> {
   root: TreeNodeOrNull<T>;
-  constructor() {
-    this.root = null;
+  constructor(node: TreeNodeOrNull<T> = null) {
+    this.root = node;
   }
 
   // DFS traversal
@@ -456,19 +456,19 @@ for (let item of arr) {
 }
 
 // console.log("testTree = ", testTree);
-console.log("preOrderTraverse = ", testTree.preOrderTraverse().toString());
-console.log(
-  "preOrderTraverseUsingStack = ",
-  testTree.preOrderTraverseUsingStack().toString()
-);
-console.log(
-  "preOrderTraversalMorris = ",
-  testTree.preOrderTraversalMorris().toString()
-);
-console.log("postOrderTraverse = ", testTree.postOrderTraverse().toString());
-console.log("postOrderTraverseUsingStack = ", testTree.postOrderTraverseUsingStack().toString());
-console.log("postOrderTraverseUsingStack2 = ", testTree.postOrderTraverseUsingStack2().toString());
-console.log("traverseDiagonal = ", testTree.traverseDiagonal());
+// console.log("preOrderTraverse = ", testTree.preOrderTraverse().toString());
+// console.log(
+//   "preOrderTraverseUsingStack = ",
+//   testTree.preOrderTraverseUsingStack().toString()
+// );
+// console.log(
+//   "preOrderTraversalMorris = ",
+//   testTree.preOrderTraversalMorris().toString()
+// );
+// console.log("postOrderTraverse = ", testTree.postOrderTraverse().toString());
+// console.log("postOrderTraverseUsingStack = ", testTree.postOrderTraverseUsingStack().toString());
+// console.log("postOrderTraverseUsingStack2 = ", testTree.postOrderTraverseUsingStack2().toString());
+// console.log("traverseDiagonal = ", testTree.traverseDiagonal());
 // console.log("inOrderTraverse = ", testTree.inOrderTraverse().toString());
 // console.log(
 //   "inOrderTraverseUsingStack = ",

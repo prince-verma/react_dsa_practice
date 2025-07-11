@@ -263,7 +263,7 @@ class Greeter {
 }
 
 let myGreeter = new Greeter();
-myGreeter.greet(); 
+// myGreeter.greet(); 
 //  output using "npx ts-node"
 // Hello from gfo
 // Hi there~

@@ -108,14 +108,28 @@ export class BinaryTree<T> {
   preOrderTraverseUsingStack(node: TreeNodeOrNull<T> = this.root): T[] {
     if (node === null) return [];
     const result: T[] = [];
+    // const stack: TreeNodeOrNull<T>[] = [node];
+    // while(stack.length > 0){
+    //   const popped = stack.pop();
+    //   const curr: TreeNodeOrNull<T> = popped ? popped : null
+    //   if(curr){
+    //     result.push(curr.data);
+    //     curr.left && stack.push(curr.left)
+    //     curr.right && stack.push(curr.right)
+    //   }
+    // }
     const stack: TreeNodeOrNull<T>[] = [node];
-    while(stack.length > 0){
-      const popped = stack.pop();
-      const curr: TreeNodeOrNull<T> = popped ? popped : null
-      if(curr){
+    let curr: TreeNodeOrNull<T> = node;
+    while (curr || stack.length > 0) {
+      if (curr) {
         result.push(curr.data);
-        curr.right && stack.push(curr.right)
-        curr.left && stack.push(curr.left)
+        curr.right && stack.push(curr.right);
+        curr = curr.left;
+      } else {
+        const popped = stack.pop();
+        if (popped) {
+          curr = popped;
+        }
       }
     }
     return result;
@@ -188,6 +202,48 @@ export class BinaryTree<T> {
       }
     }
     return result;
+  }
+
+  // postOrder traversal LRN
+  postOrderTraverseUsingStack2(node: TreeNodeOrNull<T> = this.root): T[] {
+    if (node === null) return [];
+    const result: T[] = [];
+    const stack: TreeNode<T>[] = [node];
+    // const stack2: TreeNode<T>[] = [];
+
+    // NRL
+    while (stack.length > 0) {
+      const curr = stack.pop()
+      curr && result.push(curr.data)
+      curr?.left && stack.push(curr.left)
+      curr?.right && stack.push(curr.right)
+    }
+
+    // while(stack2.length>0){
+    //   const popped =  stack2.pop();
+    //   popped && result.push(popped?.data)
+    // }
+    return result.reverse();
+  }
+
+  private recurDiagonalLevel(node: TreeNode<T>, level: number, result: T[][]): void{
+
+    if(!result[level]){
+      result[level] = []
+    }
+    node && result[level].push(node?.data)
+    node.left && this.recurDiagonalLevel(node.left, level+1, result)
+    node.right && this.recurDiagonalLevel(node.right, level, result)
+  }
+
+  traverseDiagonal(node: TreeNodeOrNull<T> = this.root):T[][] {
+    if (!node) return []
+
+    const result: T[][] = [];
+
+    this.recurDiagonalLevel(node, 0, result)
+
+    return result
   }
 
   // BFS traversal -- Level order traversal
@@ -393,20 +449,26 @@ export class BinaryTree<T> {
   }
 }
 
-// const testTree = new BinaryTree<number>();
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// for (let item of arr) {
-//   testTree.insert(item);
-// }
+const testTree = new BinaryTree<number>();
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+for (let item of arr) {
+  testTree.insert(item);
+}
 
 // console.log("testTree = ", testTree);
-// console.log("preOrderTraverse = ", testTree.preOrderTraverse().toString());
-// console.log(
-//   "preOrderTraverseUsingStack = ",
-//   testTree.preOrderTraverseUsingStack().toString()
-// );
-// console.log("postOrderTraverse = ", testTree.postOrderTraverse().toString());
-// console.log("postOrderTraverse = ", testTree.postOrderTraverseUsingStack().toString());
+console.log("preOrderTraverse = ", testTree.preOrderTraverse().toString());
+console.log(
+  "preOrderTraverseUsingStack = ",
+  testTree.preOrderTraverseUsingStack().toString()
+);
+console.log(
+  "preOrderTraversalMorris = ",
+  testTree.preOrderTraversalMorris().toString()
+);
+console.log("postOrderTraverse = ", testTree.postOrderTraverse().toString());
+console.log("postOrderTraverseUsingStack = ", testTree.postOrderTraverseUsingStack().toString());
+console.log("postOrderTraverseUsingStack2 = ", testTree.postOrderTraverseUsingStack2().toString());
+console.log("traverseDiagonal = ", testTree.traverseDiagonal());
 // console.log("inOrderTraverse = ", testTree.inOrderTraverse().toString());
 // console.log(
 //   "inOrderTraverseUsingStack = ",

@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import { pattern1 } from "./DSA/patterns/wPattern";
-import { BinaryTree } from "./DSA/tree/binaryTreeBaiscs";
+import { BinaryTree } from "./DSA/tree/binaryTreeBasics";
 import * as basics from './typeScript/basics'
 
 // const range = {

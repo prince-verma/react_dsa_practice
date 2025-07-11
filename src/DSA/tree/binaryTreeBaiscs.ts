@@ -108,20 +108,45 @@ export class BinaryTree<T> {
   preOrderTraverseUsingStack(node: TreeNodeOrNull<T> = this.root): T[] {
     if (node === null) return [];
     const result: T[] = [];
-    const stack: TreeNodeOrNull<T>[] = [];
-    let curr: TreeNodeOrNull<T> = node;
-    while (curr || stack.length > 0) {
-      if (curr) {
+    const stack: TreeNodeOrNull<T>[] = [node];
+    while(stack.length > 0){
+      const popped = stack.pop();
+      const curr: TreeNodeOrNull<T> = popped ? popped : null
+      if(curr){
         result.push(curr.data);
-        stack.push(curr);
-        curr = curr.left;
-      } else {
-        const popped = stack.pop();
-        if (popped) {
-          curr = popped.right;
-        }
+        curr.right && stack.push(curr.right)
+        curr.left && stack.push(curr.left)
       }
     }
+    return result;
+  }
+
+  // preOrder traversal NLR
+  preOrderTraversalMorris(node: TreeNodeOrNull<T> = this.root): T[] {
+    if (!node) return [];
+    const result: T[] = [];
+    let curr: TreeNodeOrNull<T> = node;
+    while (curr) {
+      if (curr.left) {
+        const predecessor = this.findInOrderPredecessor(curr);
+        if (predecessor) {
+          // if there is thread exist, then remove the thread
+          if (predecessor.right && predecessor.right === curr) {
+            predecessor.right = null;
+            curr = curr.right;
+          } else {
+            // if thread not exist, add thread for future traversal
+            predecessor.right = curr;
+            result.push(curr.data);
+            curr = curr.left;
+          }
+        }
+      } else {
+        result.push(curr.data);
+        curr = curr.right;
+      }
+    }
+
     return result;
   }
 

@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import { pattern1 } from "./DSA/patterns/wPattern";
-import { BinarySearchTree } from "./DSA/tree/binarySearchTree";
+import { MaxHeap } from "./DSA/tree/maxHeap";
 // import { buildBinaryTree } from "./DSA/tree/buildBinaryTree_InOrder_preOrder";
 // import * as basics from './typeScript/basics'
 

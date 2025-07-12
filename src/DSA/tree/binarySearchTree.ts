@@ -52,6 +52,7 @@ export class BinarySearchTree extends BinaryTree<number> {
     return null; // Return null instead of curr (which would be null anyway)
   }
 
+  // left most child of right subtree
   private getInOrderSuccessor(curr: BstTreeNode): BstTreeNode {
     if (!curr) return null;
     curr = curr.right;
@@ -87,6 +88,7 @@ export class BinarySearchTree extends BinaryTree<number> {
       }
 
       // When both children are present
+      // left most child of right subtree
       let inOrderSuccessor = this.getInOrderSuccessor(node);
       if (inOrderSuccessor) {
         node.data = inOrderSuccessor.data;

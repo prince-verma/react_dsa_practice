@@ -90,6 +90,9 @@ export class MinHeap {
       ];
       index = this.parent(index);
     }
+    if(this.arr[this.left(index)]! < this.arr[index]! || this.arr[this.right(index)]! < this.arr[index]!){
+      this.minHeapify(index)
+    }
   }
 
   delete(index: number): void {
@@ -102,9 +105,9 @@ export class MinHeap {
 // const arr: number[] = [18, 17, 2, 99, 199, 7, 36, 92, 10, 28];
 // console.log("arr  --- ", arr);
 // arr.forEach((item) => testHeap.insert(item));
-// array in max-heap will be like -- [2, 7, 10, 17, 18, 28, 36, 92, 99, 199]
+// // array in max-heap will be like -- [2, 7, 10, 17, 18, 28, 36, 92, 99, 199]
 // console.log("testHeap  --- ", testHeap);
-// testHeap.removeMin();
-// testHeap.updateValueAt(7, 1);
-// testHeap.delete(7);
+// // testHeap.removeMin();
+// testHeap.updateValueAt(3, 93);
+// // testHeap.delete(7);
 // console.log("testHeap  --- ", testHeap);

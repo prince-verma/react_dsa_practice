@@ -90,6 +90,9 @@ export class MaxHeap {
       ];
       index = this.parent(index);
     }
+    if(this.arr[this.left(index)]! > this.arr[index]! || this.arr[this.right(index)]! > this.arr[index]!){
+      this.maxHeapify(index)
+    }
   }
 
   delete(index: number): void {
@@ -100,9 +103,9 @@ export class MaxHeap {
 
 // const testHeap: MaxHeap = new MaxHeap(10);
 // const arr: number[] = [18, 17, 2, 99, 199, 7, 36, 92, 10, 28];
+// console.log("arr  --- ", arr);
 // arr.forEach((item) => testHeap.insert(item));
-// array in max-heap will be like --  [199, 99, 92, 36, 28, 18, 17, 10, 7, 2]
-// console.log("testHeap  --- ", testHeap);
-// testHeap.removeMax();
-// testHeap.updateValueAt(7, 7898);
+// // array in max-heap will be like --  [199, 99, 92, 36, 28, 18, 17, 10, 7, 2]
+// // testHeap.removeMax();
+// testHeap.updateValueAt(3, 1);
 // console.log("testHeap  --- ", testHeap);

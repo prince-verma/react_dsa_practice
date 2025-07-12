@@ -60,7 +60,7 @@ export class BinarySearchTree extends BinaryTree<number> {
     }
     return curr;
   }
-  
+
   private deleteNodeRecur(value: number, node: BstTreeNode): BstTreeNode {
     // Base case
     if (node === null) {
@@ -83,7 +83,7 @@ export class BinarySearchTree extends BinaryTree<number> {
 
       // When root has only left child
       if (node.right === null) {
-        return  node.left;
+        return node.left;
       }
 
       // When both children are present
@@ -96,8 +96,34 @@ export class BinarySearchTree extends BinaryTree<number> {
     return node;
   }
 
-  deleteValue(value: number): void{
-    this.root = this.deleteNodeRecur(value, this.root)
+  deleteValue(value: number): void {
+    this.root = this.deleteNodeRecur(value, this.root);
+  }
+
+  private buildBalancedTree(
+    nodes: number[],
+    start: number,
+    end: number
+  ): BstTreeNode {
+    if (start > end) return null;
+
+    const mid = Math.floor((start + end) / 2);
+    const root = new TreeNode(nodes[mid]);
+
+    root.left = this.buildBalancedTree(nodes, start, mid - 1);
+    root.right = this.buildBalancedTree(nodes, mid + 1, end);
+
+    return root;
+  }
+
+  balanceTree(): void {
+    const inOrderTraversal: number[] = this.inOrderTraversalMorris();
+
+    this.root = this.buildBalancedTree(
+      inOrderTraversal,
+      0,
+      inOrderTraversal.length
+    );
   }
 }
 
@@ -121,3 +147,18 @@ export class BinarySearchTree extends BinaryTree<number> {
 //   console.log(`"deleteValue(${item}) = "`, testTree.deleteValue(item));
 //   console.log("inOrderTraverse = ", testTree.inOrderTraverse().toString());
 // })
+
+// const arr = [1,2,3,4,5,6,7,8, 9]
+// const tree1 = new BinarySearchTree()
+// for(let item of arr){
+//   tree1.insert(item)
+// }
+// console.log("test-Tree = ", tree1);
+// console.log("height = ", tree1.height());
+// console.log("preOrderTraverse = ", tree1.preOrderTraverse().toString());
+// console.log("inOrderTraverse = ", tree1.inOrderTraverse().toString());
+// tree1.balanceTree()
+// console.log("test-Tree = ", tree1);
+// console.log("height = ", tree1.height());
+// console.log("preOrderTraverse = ", tree1.preOrderTraverse().toString());
+// console.log("inOrderTraverse = ", tree1.inOrderTraverse().toString());

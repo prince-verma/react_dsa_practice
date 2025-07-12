@@ -2,9 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import { pattern1 } from "./DSA/patterns/wPattern";
-import { BinaryTree } from "./DSA/tree/binaryTreeBasics";
-import { buildBinaryTree } from "./DSA/tree/buildBinaryTree_InOrder_preOrder";
-import * as basics from './typeScript/basics'
+import { BinarySearchTree } from "./DSA/tree/binarySearchTree";
+// import { buildBinaryTree } from "./DSA/tree/buildBinaryTree_InOrder_preOrder";
+// import * as basics from './typeScript/basics'
 
 // const range = {
 //   from: 1,

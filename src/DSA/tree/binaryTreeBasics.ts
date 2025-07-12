@@ -449,11 +449,11 @@ export class BinaryTree<T> {
   }
 }
 
-const testTree = new BinaryTree<number>();
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-for (let item of arr) {
-  testTree.insert(item);
-}
+// const testTree = new BinaryTree<number>();
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// for (let item of arr) {
+//   testTree.insert(item);
+// }
 
 // console.log("testTree = ", testTree);
 // console.log("preOrderTraverse = ", testTree.preOrderTraverse().toString());

@@ -2,8 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import { pattern1 } from "./DSA/patterns/wPattern";
-import { MaxHeap } from "./DSA/tree/maxHeap";
-import { MinHeap } from "./DSA/tree/minHeap";
+// import { MaxHeap } from "./DSA/tree/maxHeap";
+// import { MinHeap } from "./DSA/tree/minHeap";
+// import { heapSort } from "./DSA/array/heapSort";
 // import { buildBinaryTree } from "./DSA/tree/buildBinaryTree_InOrder_preOrder";
 // import * as basics from './typeScript/basics'
 

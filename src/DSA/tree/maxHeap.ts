@@ -10,7 +10,7 @@ export class MaxHeap {
   }
 
   parent(index: number): number {
-    return Math.floor(index - 1 / 2);
+    return Math.floor((index - 1) / 2);
   }
 
   left(index: number): number {
@@ -107,5 +107,5 @@ export class MaxHeap {
 // arr.forEach((item) => testHeap.insert(item));
 // // array in max-heap will be like --  [199, 99, 92, 36, 28, 18, 17, 10, 7, 2]
 // // testHeap.removeMax();
-// testHeap.updateValueAt(3, 1);
+// testHeap.updateValueAt(0, 1);
 // console.log("testHeap  --- ", testHeap);

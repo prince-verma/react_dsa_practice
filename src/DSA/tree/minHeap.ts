@@ -10,7 +10,7 @@ export class MinHeap {
   }
 
   parent(index: number): number {
-    return Math.floor(index - 1 / 2);
+    return Math.floor((index - 1) / 2);
   }
 
   left(index: number): number {

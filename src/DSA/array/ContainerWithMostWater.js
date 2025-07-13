@@ -39,5 +39,5 @@ var maxArea = function (height) {
   return result;
 };
 
-const arr = [1, 8, 6, 2, 5, 4, 8, 3, 7];
-console.log(maxArea(arr));
+// const arr = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+// console.log(maxArea(arr));

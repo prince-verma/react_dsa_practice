@@ -14,10 +14,10 @@ class MyPromise {
   #catchCbs = [];
 
   constructor(cb) {
-    try{
+    try {
       cb(this.#onSuccessBind, this.#onRejectBind);
-    } catch (error){
-      this.#onRejectBind(error)
+    } catch (error) {
+      this.#onRejectBind(error);
     }
   }
 
@@ -40,9 +40,9 @@ class MyPromise {
     queueMicrotask(() => {
       if (this.#state !== STATE.PENDING) return;
 
-      if( val instanceof MyPromise){
-        val.then(this.#onSuccessBind, this.#onRejectBind)
-        return
+      if (val instanceof MyPromise) {
+        val.then(this.#onSuccessBind, this.#onRejectBind);
+        return;
       }
 
       this.#value = val;
@@ -54,10 +54,10 @@ class MyPromise {
   #onReject(val) {
     queueMicrotask(() => {
       if (this.#state !== STATE.PENDING) return;
-      
-      if( val instanceof MyPromise){
-        val.then(this.#onSuccessBind, this.#onRejectBind)
-        return
+
+      if (val instanceof MyPromise) {
+        val.then(this.#onSuccessBind, this.#onRejectBind);
+        return;
       }
 
       this.#value = val;
@@ -74,10 +74,10 @@ class MyPromise {
           return;
         }
         try {
-          const returned = thenCb(result)
-          if( returned instanceof MyPromise){
-            returned.then(resolve, reject)
-          }else{
+          const returned = thenCb(result);
+          if (returned instanceof MyPromise) {
+            returned.then(resolve, reject);
+          } else {
             resolve(returned);
           }
         } catch (error) {
@@ -90,10 +90,10 @@ class MyPromise {
           return;
         }
         try {
-          const returned = catchCb(result)
-          if( returned instanceof MyPromise){
-            returned.then(resolve, reject)
-          }else{
+          const returned = catchCb(result);
+          if (returned instanceof MyPromise) {
+            returned.then(resolve, reject);
+          } else {
             resolve(returned);
           }
         } catch (error) {
@@ -150,18 +150,19 @@ class MyPromise {
     });
   }
   static allSettled(promises) {
-     return new MyPromise((resolve) => {
+    return new MyPromise((resolve) => {
       let count = 0;
       let results = [];
       for (let i = 0; i < promises.length; i++) {
         const promise = promises[i];
         MyPromise.resolve(promise)
           .then((result) => {
-            results[i] = {status: STATE.FULFILLED, value: result};
+            results[i] = { status: STATE.FULFILLED, value: result };
           })
           .catch((reason) => {
-            results[i] = {status: STATE.REJECTED, reason};
-          }).finally(() => {
+            results[i] = { status: STATE.REJECTED, reason };
+          })
+          .finally(() => {
             count++;
             if (count === promises.length) {
               resolve(results);
@@ -172,32 +173,30 @@ class MyPromise {
   }
 
   static race(promises) {
-     return new MyPromise((resolve) => {
+    return new MyPromise((resolve) => {
       for (let i = 0; i < promises.length; i++) {
         const promise = promises[i];
-        MyPromise.resolve(promise)
-          .then(resolve)
-          .catch(resolve)
+        MyPromise.resolve(promise).then(resolve).catch(resolve);
       }
     });
   }
   static any(promises) {
-     return new MyPromise((resolve, reject) => {
+    return new MyPromise((resolve, reject) => {
       let errorCount = 0;
       let errors = [];
       for (let i = 0; i < promises.length; i++) {
         const promise = promises[i];
         MyPromise.resolve(promise)
           .then((result) => {
-            resolve(result)
+            resolve(result);
           })
           .catch((reason) => {
-            errorCount++
-            errors[i] = {status: STATE.REJECTED, reason};
+            errorCount++;
+            errors[i] = { status: STATE.REJECTED, reason };
             if (errorCount === promises.length) {
               reject(errors);
             }
-          })
+          });
       }
     });
   }

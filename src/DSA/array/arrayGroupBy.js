@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-extend-native
 Array.prototype.groupBy = function (fn) {
   return this.reduce((acc, item) => {
     const key = fn(item);
     if (!(key in acc)) {
-        acc[key] = []
+      acc[key] = []
     }
     acc.push(item);
     return acc

@@ -1,6 +1,6 @@
 import { JokeType } from "./jokeSlice";
 import { createAppAsyncThunk } from "../store/storeTypes";
-import { getJokesData } from "./selectors";
+import { getJokesData, getJokesLoading } from "./selectors";
 
 const getJoke = async (): Promise<JokeType | null> => {
   try {
@@ -29,7 +29,7 @@ export const fetchRandomJoke = createAppAsyncThunk(
   },
   {
     condition: (arg, thunkApi) => {
-      const { isLoading } = getJokesData(thunkApi.getState());
+      const isLoading = getJokesLoading(thunkApi.getState());
       return !isLoading;
     },
   }

@@ -4,11 +4,25 @@
   flex: 1;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 24px;
+  padding: 48px 24px;
 }
 
 .jokeContainer button {
   padding: 8px;
   border-radius: 10px;
+}
+
+.jokeCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.jokeText {
+  display: flex;
+  flex: 1
+}
+
+.jokeCard button {
+  max-width: 150px;
+  max-height: 100px;
 }

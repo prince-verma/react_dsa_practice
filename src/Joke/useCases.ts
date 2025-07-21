@@ -1,6 +1,6 @@
 import { JokeType } from "./jokeSlice";
 import { createAppAsyncThunk } from "../store/storeTypes";
-import { getJokesData, getJokesLoading } from "./selectors";
+import { getJokesLoading } from "./selectors";
 
 const getJoke = async (): Promise<JokeType | null> => {
   try {
@@ -10,7 +10,7 @@ const getJoke = async (): Promise<JokeType | null> => {
     await new Promise((res) => {
       setTimeout(() => {
         res(null);
-      }, 5000);
+      }, 1000);
     });
     return joke;
   } catch (error) {

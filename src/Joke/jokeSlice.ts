@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchRandomJoke } from "./useCases";
 
 export type JokeType = {
   created_at: string;
@@ -9,28 +10,45 @@ export type JokeType = {
   value: string;
 };
 
-interface JokeState {
+export interface JokeReducerState {
   jokesData: JokeType[];
+  isLoading: boolean;
 }
 
-const initialState: JokeState = {
+const initialState: JokeReducerState = {
   jokesData: [],
+  isLoading: false,
 };
 
 export const jokeSlice = createSlice({
   name: "jokeReducer",
   initialState,
   reducers: {
-    addJoke: (state: JokeState, action: PayloadAction<JokeType>) => {
-      state.jokesData.push(action.payload);
-    },
-    deleteJoke: (state: JokeState, action: PayloadAction<string>) => {
+    deleteJoke: (state: JokeReducerState, action: PayloadAction<string>) => {
       state.jokesData = state.jokesData.filter(
         (joke) => joke.id !== action.payload
       );
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchRandomJoke.pending, (state: JokeReducerState) => {
+        state.isLoading = true;
+      })
+      .addCase(
+        fetchRandomJoke.fulfilled,
+        (state: JokeReducerState, action: PayloadAction<JokeType | null>) => {
+          state.isLoading = false;
+          if (action.payload) {
+            state.jokesData.push(action.payload);
+          }
+        }
+      )
+      .addCase(fetchRandomJoke.rejected, (state: JokeReducerState) => {
+        state.isLoading = false;
+      });
+  },
 });
 
-export const { addJoke, deleteJoke } = jokeSlice.actions;
+export const { deleteJoke } = jokeSlice.actions;
 export default jokeSlice.reducer;

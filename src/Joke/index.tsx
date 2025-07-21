@@ -1,30 +1,16 @@
 import React, { useCallback } from "react";
 import "./index.css";
-import { addJoke, deleteJoke } from "./jokeSlice";
+import { deleteJoke } from "./jokeSlice";
 import type { JokeType } from "./jokeSlice";
-import { jokesDataSelectors } from "./selectors";
+import { getJokesData } from "./selectors";
 import { useAppDispatch, useAppSelector } from "../store/storeHooks";
-
-const getJoke = async (): Promise<JokeType | null> => {
-  try {
-    const url = "https://api.chucknorris.io/jokes/random";
-    const data = await fetch(url);
-    const joke = await data.json();
-    console.log("data", joke);
-    return joke;
-  } catch (error) {
-    return null;
-  }
-};
+import { fetchRandomJoke } from "./useCases";
 
 function Joke() {
-  const jokes: JokeType[] = useAppSelector(jokesDataSelectors)
+  const { jokes, isLoading }: { jokes: JokeType[], isLoading: boolean } = useAppSelector(getJokesData)
   const dispatch = useAppDispatch()
   const handCtaClick = useCallback(async () => {
-    const data: JokeType | null = await getJoke();
-    if (data) {
-      dispatch(addJoke(data))
-    }
+    dispatch(fetchRandomJoke())
   }, [dispatch]);
 
   const handleJokeDelete = useCallback(
@@ -38,6 +24,7 @@ function Joke() {
   return (
     <div className="jokeContainer">
       <button onClick={handCtaClick}>click me to get a joke</button>
+      {isLoading ? <div>Loading...</div> : null}
       {
         jokes.map((joke: JokeType) => {
           return (

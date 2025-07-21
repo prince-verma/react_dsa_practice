@@ -1,5 +1,8 @@
 import { RootState } from "../store/storeTypes";
 
-export const jokesDataSelectors = (state: RootState) => {
-  return state.jokeReducer.jokesData;
+export const getJokesData = (state: RootState) => {
+  return {
+    jokes: state.jokeReducer.jokesData,
+    isLoading: state.jokeReducer.isLoading,
+  };
 };

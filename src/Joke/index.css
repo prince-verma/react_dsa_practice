@@ -1,0 +1,14 @@
+.jokeContainer {
+  text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 24px;
+}
+
+.jokeContainer button {
+  padding: 8px;
+  border-radius: 10px;
+}

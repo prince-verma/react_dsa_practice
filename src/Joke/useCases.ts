@@ -1,10 +1,11 @@
 import { JokeType } from "./jokeSlice";
 import { createAppAsyncThunk } from "../store/storeTypes";
 import { getJokesLoading } from "./selectors";
+import { config } from "../config";
 
 const getJoke = async (): Promise<JokeType | null> => {
   try {
-    const url = "https://api.chucknorris.io/jokes/random";
+    const url = `${config.baseUrl}/jokes/random`;
     const data = await fetch(url);
     const joke = await data.json();
     await new Promise((res) => {

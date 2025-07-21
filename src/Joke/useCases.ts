@@ -5,9 +5,9 @@ import { config } from "../config";
 
 const getJoke = async (): Promise<JokeType | null> => {
   try {
-    const url = `${config.baseUrl}/jokes/random`;
+    const url = `${config.baseUrl}/joke`;
     const data = await fetch(url);
-    const joke = await data.json();
+    const { data: joke } = await data.json();
     await new Promise((res) => {
       setTimeout(() => {
         res(null);

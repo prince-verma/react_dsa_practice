@@ -3,9 +3,8 @@
  * @param {number} b
  * @return {number}
  */
-var getSubtraction = function(a, b) {
+var getSubtraction = function (a, b) {
     return a & ~b
-
 };
 
 // console.log("here comes -- ", getSubtraction(4, 3))

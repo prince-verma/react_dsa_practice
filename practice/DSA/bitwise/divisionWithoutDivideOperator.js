@@ -20,40 +20,38 @@
 // const MAX_INT = 2 ** 31 - 1;
 // const MIN_INT = -(2 ** 31);
 
-// var divide = function (dividend, divisor) {
-//   if (dividend === MIN_INT && divisor === -1) return MAX_INT;
-//   if (dividend === MIN_INT && divisor === 1) return MIN_INT;
-//   if (divisor === 0) return dividend >= 0 ? Infinity : -Infinity;
-//   const isNegative = (dividend < 0) !== (divisor < 0);
-
-//   dividend = Math.abs(dividend)
-//   divisor = Math.abs(divisor)
-
-//   let val = divisor,
-//     prevVal = 0,
-//     tempDividend = dividend;
-//   let shiftCount = 0;
-//   let quotient = 0;
+var divide1 = function (dividend, divisor) {
+  if (dividend === MIN_INT && divisor === -1) return MAX_INT;
+  if (dividend === MIN_INT && divisor === 1) return MIN_INT;
+  if (divisor === 0) return dividend >= 0 ? Infinity : -Infinity;
+  const isNegative = (dividend < 0) !== (divisor < 0);
 
 
-//   while (val <= tempDividend) {
-//     prevVal = val;
-//     val = val << 1;
-//     shiftCount++;
-//     if (val > tempDividend) {
-//       tempDividend -= prevVal;
-//       val = divisor;
-//       quotient += 1 << --shiftCount;
-//       shiftCount = 0;
-//     }
-//   }
+  let div = Math.abs(divisor),
+    prevVal = 0,
+    divd = Math.abs(dividend);
+  let shiftCount = 0;
+  let quotient = 0;
 
-//   return isNegative ? -quotient : quotient;
-// };
+
+  while (div <= divd) {
+    prevVal = div;
+    div = div << 1;
+    shiftCount++;
+    if (div > divd) {
+      divd -= prevVal;
+      div = divisor;
+      quotient += 1 << --shiftCount;
+      shiftCount = 0;
+    }
+  }
+
+  return isNegative ? -quotient : quotient;
+};
 
 
 const MAX_INT = 2 ** 31 - 1;
-const MIN_INT = -(2 ** 31)-1;
+const MIN_INT = -(2 ** 31) - 1;
 
 var divide = function (dividend, divisor) {
   if (dividend === MIN_INT && divisor === -1) return MAX_INT;

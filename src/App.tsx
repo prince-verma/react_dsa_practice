@@ -1,15 +1,17 @@
 import React from "react";
-import "./App.css";
-import Joke from "./Joke";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import "./App.css";
+// import Joke from "./Joke";
+// import TodoList from "./TodoList";
 
 
 function App() {
   return (
     <Provider store={store} >
       <div className="App">
-        <Joke />
+        {/* <Joke /> */}
+        {/* <TodoList /> */}
       </div>
     </Provider>
   );

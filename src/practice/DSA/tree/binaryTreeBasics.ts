@@ -108,17 +108,7 @@ export class BinaryTree<T> {
   preOrderTraverseUsingStack(node: TreeNodeOrNull<T> = this.root): T[] {
     if (node === null) return [];
     const result: T[] = [];
-    // const stack: TreeNodeOrNull<T>[] = [node];
-    // while(stack.length > 0){
-    //   const popped = stack.pop();
-    //   const curr: TreeNodeOrNull<T> = popped ? popped : null
-    //   if(curr){
-    //     result.push(curr.data);
-    //     curr.left && stack.push(curr.left)
-    //     curr.right && stack.push(curr.right)
-    //   }
-    // }
-    const stack: TreeNodeOrNull<T>[] = [node];
+    const stack: TreeNodeOrNull<T>[] = [];
     let curr: TreeNodeOrNull<T> = node;
     while (curr || stack.length > 0) {
       if (curr) {
@@ -213,10 +203,10 @@ export class BinaryTree<T> {
 
     // NRL
     while (stack.length > 0) {
-      const curr = stack.pop()
-      curr && result.push(curr.data)
-      curr?.left && stack.push(curr.left)
-      curr?.right && stack.push(curr.right)
+      const curr = stack.pop();
+      curr && result.push(curr.data);
+      curr?.left && stack.push(curr.left);
+      curr?.right && stack.push(curr.right);
     }
 
     // while(stack2.length>0){
@@ -226,24 +216,27 @@ export class BinaryTree<T> {
     return result.reverse();
   }
 
-  private recurDiagonalLevel(node: TreeNode<T>, level: number, result: T[][]): void{
-
-    if(!result[level]){
-      result[level] = []
+  private recurDiagonalLevel(
+    node: TreeNode<T>,
+    level: number,
+    result: T[][]
+  ): void {
+    if (!result[level]) {
+      result[level] = [];
     }
-    node && result[level].push(node?.data)
-    node.left && this.recurDiagonalLevel(node.left, level+1, result)
-    node.right && this.recurDiagonalLevel(node.right, level, result)
+    node && result[level].push(node?.data);
+    node.left && this.recurDiagonalLevel(node.left, level + 1, result);
+    node.right && this.recurDiagonalLevel(node.right, level, result);
   }
 
-  traverseDiagonal(node: TreeNodeOrNull<T> = this.root):T[][] {
-    if (!node) return []
+  traverseDiagonal(node: TreeNodeOrNull<T> = this.root): T[][] {
+    if (!node) return [];
 
     const result: T[][] = [];
 
-    this.recurDiagonalLevel(node, 0, result)
+    this.recurDiagonalLevel(node, 0, result);
 
-    return result
+    return result;
   }
 
   // BFS traversal -- Level order traversal

@@ -7,8 +7,7 @@ function areaOfMaxDiagonal(dimensions: number[][]): number {
     if (dia > maxDia) {
       maxDia = dia;
       maxArea = length * width;
-    }
-    if (dia === maxDia) {
+    } else if (dia === maxDia) {
       maxArea = Math.max(maxArea, length * width);
     }
   }
